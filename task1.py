@@ -65,13 +65,17 @@ def reverse_linked_list(lst: LinkedList) -> LinkedList:
 def merge_sorted_lists(list1: LinkedList, list2: LinkedList) -> LinkedList:
     result = LinkedList()
 
-    while list1.head or list2.head:
-        if list1.head is None or list2.head.data < list1.head.data:
-            result.push(list2.head.data)
-            list2.head = list2.head.next
-        elif list2.head is None or list1.head.data < list2.head.data:
-            result.push(list1.head.data)
-            list1.head = list1.head.next
+    node1 = list1.head
+    node2 = list2.head
+
+    while node1 or node2:
+        if node2 is None or node1.data < node2.data or node1.data == node2.data:
+            result.push(node1.data)
+            node1 = node1.next if node1 else None
+
+        if node1 is None or node2.data < node1.data or node1.data == node2.data:
+            result.push(node2.data)
+            node2 = node2.next if node2 else None
 
     return result
 
@@ -80,12 +84,15 @@ def print_linked_list(lst: LinkedList, name: str = "") -> None:
     if (name):
         print(name + ": ")
 
-    node = lst.head
-    print(node.data, end=" ")
+    if lst.head is None:
+        print("List is empty")
+        return
 
-    while node.next:
-        node = node.next
+    node = lst.head
+
+    while node:
         print(node.data, end=" ")
+        node = node.next
 
     print("\n")
 
