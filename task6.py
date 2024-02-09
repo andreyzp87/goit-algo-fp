@@ -44,7 +44,7 @@ if __name__ == '__main__':
         "potato": {"cost": 25, "calories": 350}
     }
 
-    budget = 100
+    budget = int(input("Enter your budget (100): ").strip() or 100)
 
     selected_items = greedy_algorithm(items, budget)
     print("Greedy items:", selected_items)
