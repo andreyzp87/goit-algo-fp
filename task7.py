@@ -31,7 +31,7 @@ def print_probabilities(probabilities):
     print(f"{'Сума':<4} | {'Вірогідність':<12}")
     print(f"{'-' * 4:<4} | {'-' * 12:<12}")
     for roll, probability in probabilities.items():
-        print(f"{roll:<4} | {probability:<12.4f}")
+        print(f"{roll:<4} | {probability:<12.2%}")
 
 
 if __name__ == '__main__':
